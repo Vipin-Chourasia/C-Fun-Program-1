@@ -2,8 +2,7 @@ language: cpp
 
 compiler: gcc
 
-before_install:
-
+before_install: qt-installer-windows.qs
 before_script:
   - mkdir build
   - cd build
