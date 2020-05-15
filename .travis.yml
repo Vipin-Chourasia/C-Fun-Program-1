@@ -1,6 +1,12 @@
-language: c
-compiler: gcc
-sudo: false # only for faster builds
+language: cpp
 
-after_success:
-  - bash <(curl -s https://codecov.io/bash)
+compiler: gcc
+
+before_install:
+
+before_script:
+  - mkdir build
+  - cd build
+  - cmake
+
+script: make
