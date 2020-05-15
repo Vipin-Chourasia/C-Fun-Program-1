@@ -1,23 +1,6 @@
-branches:
-  only:
-    - master
+language: c
+compiler: gcc
+sudo: false # only for faster builds
 
-install:
-  - make get-deps
-  
-compiler:
-  - gcc
-build_script:
-  - qmake main.pro
-  - mingw32-make
-after_build:
-  - windeployqt release/main.exe
-  - cmd: cp LICENSE release/LICENSE.txt"
-  - iscc innosetup.iss
-  - rm release/*.o
-  - rm release/*.cpp
-
-artifacts:
-  - path: Output\YOUR-APP-*.exe
-  - path: release
-    type: zip
+after_success:
+  - bash <(curl -s https://codecov.io/bash)
